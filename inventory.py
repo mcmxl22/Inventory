@@ -34,7 +34,7 @@ def get_data() -> dict:
     return existing_items
 
 
-class Inventory_file:
+class Json_file:
     """Check and/or create inventory file."""
 
     def create_inventory_file() -> None:
@@ -50,7 +50,7 @@ class Inventory_file:
         if path.exists("inventory.json"):
             pass
         else:
-            Inventory_file.create_inventory_file()
+            Json_file.create_inventory_file()
 
 
 class Menu:
@@ -79,6 +79,7 @@ class Inventory:
         try:
             add_item = input("Enter item: ")
             quantity = int(input("Enter quantity: "))
+            #Location = input("Enter location: ")
 
             if add_item in item:
                 item[add_item] += quantity
@@ -144,6 +145,7 @@ class Inventory:
             print("No inventory available!\n")
 
         else:
+            #TODO: Add location to view_items
             for item, view in view_items.items():
                 if view < 1:
                     print("No inventory available!\n")
@@ -155,7 +157,7 @@ class Inventory:
 def main():
     """main function"""
     while True:
-        Inventory_file.check_inventory_file()
+        Json_file.check_inventory_file()
         choice = Menu.list_choices()
 
         option_dict = {
