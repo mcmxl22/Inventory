@@ -1,3 +1,6 @@
+import json
+
+
 def get_data() -> dict:
     """Get Json data from file."""
     with open("inventory.json", "r+") as file:
