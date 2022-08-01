@@ -1,7 +1,0 @@
-def clear_screen() -> None:
-    """Clear the screen."""
-    if platform in "win32":
-        system("cls")
-
-    else:
-        system("clear")
