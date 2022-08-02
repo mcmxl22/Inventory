@@ -2,35 +2,35 @@
 """
 Author: M. McConnaughey
 Inventory Version 3
-Date: 08/02/2022
+Date: 08/03/2022
 Python 3.7
 """
 
 
-import inventory
-import clear_screen
-import get_data
-import menu
-import make_jason_file
+from inventory import Inventory
+from utils.clear_screen import Clear_Screen
+from utils.get_data import get_data
+from utils.menu import Menu
+from utils.make_jason_file import Json_file
 
 
 def main():
     """main function"""
     while True:
-        make_jason_file.Json_file.check_inventory_file()
-        choice = menu.Menu.list_choices()
+        Json_file.check_inventory_file()
+        choice = Menu.list_choices()
 
         option_dict = {
-            "1": inventory.Inventory.add_inventory,
-            "2": inventory.Inventory.take_items,
-            "3": inventory.Inventory.view_items,
-            "4": inventory.Inventory.delete_item,
+            "1": Inventory.add_inventory,
+            "2": Inventory.take_items,
+            "3": Inventory.view_items,
+            "4": Inventory.delete_item,
             "5": exit,
         }
 
         try:
-            clear_screen.Clear_Screen()
-            get_data.get_data()
+            Clear_Screen()
+            get_data()
             option_dict[choice]()
 
         except KeyError:
@@ -38,5 +38,5 @@ def main():
 
 
 if __name__ == "__main__":
-    clear_screen.Clear_Screen()
+    Clear_Screen()
     main()
