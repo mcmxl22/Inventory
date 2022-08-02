@@ -5,66 +5,65 @@ from utils.get_data import get_data
 
 class Inventory:
     """Add, remove and view inventory."""
+    
+    def write_to_file(inventory_item) -> None:
+        """Write to file."""
+        with open("inventory.json", "w") as file:
+            json.dump(inventory_item, file, indent=4)
 
     def add_inventory() -> dict:
         """Add items to inventory."""
-        item = get_data()
+        inventory_item = get_data()
         try:
             add_item = input("Enter item: ")
             add_quantity = int(input("Enter quantity: "))
-            if add_item in item:
-                item[add_item] += add_quantity
+            if add_item in inventory_item:
+                inventory_item[add_item] += add_quantity
                 print(f"{add_item} added to inventory.\n")
             else:
-                item[add_item] = add_quantity
+                inventory_item[add_item] = add_quantity
         except ValueError:
             print("Invalid Entry!")
         Clear_Screen()
         print(f"{add_item} added to inventory.")
-        with open("inventory.json", "r+") as file:
-            json.dump(item, file, indent=4)
-
+        Inventory.write_to_file(inventory_item)
 
     def delete_item() -> dict:
         """Delete items from inventory."""
-        item = get_data()
+        inventory_item = get_data()
         try:
-            if item == {}:
+            if inventory_item == {}:
                 print("Nothing to delete.\n")
                 pass
             else:
                 delete = input("Enter item to delete: ")
-                item.pop(delete)
+                inventory_item.pop(delete)
                 print(f"{delete} deleted!\n")
-                with open("inventory.json", "w") as file:
-                    json.dump(item, file, indent=4)
+                Inventory.write_to_file(inventory_item)
         except KeyError as error:
             print(error)
-        return item
-
+        return inventory_item
 
     def take_items() -> dict:
         """Take items from inventory."""
-        item = get_data()
-        if item == {}:
+        inventory_item = get_data()
+        if inventory_item == {}:
             print("No inventory available!\n")
         else:
             try:
                 take = input("What did you take? ")
                 take_quantity = int(input(f"How many {take}? "))
-                if take_quantity > item[take]:
+                if take_quantity > inventory_item[take]:
                     print(f"Not enough {take} available!\n")
-                elif take in item:
-                    item[take] -= take_quantity
-                    print(f"{item[take]} {take} left.\n")
-                    with open("inventory.json", "w") as file:
-                        json.dump(item, file, indent=4)
+                elif take in inventory_item:
+                    inventory_item[take] -= take_quantity
+                    print(f"{inventory_item[take]} {take} left.\n")
+                    Inventory.write_to_file(inventory_item)
                 else:
                     print(f"{take} doesn't exist.\n")
             except ValueError:
                 print("Invalid entry!\n")
-        return item
-
+        return inventory_item
 
     def view_items() -> None:
         """View items from inventory."""
