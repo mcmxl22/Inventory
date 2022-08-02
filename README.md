@@ -1,4 +1,4 @@
-An inventory system.
+A command line inventory system.
 
 Features:
 
