@@ -15,7 +15,7 @@ class Inventory:
         """Add items to inventory."""
         inventory_item = get_data()
         try:
-            add_item = input("Enter item: ")
+            add_item = input("Enter item: ").strip()
             add_quantity = int(input("Enter quantity: "))
             if add_item in inventory_item:
                 inventory_item[add_item] += add_quantity
@@ -36,7 +36,7 @@ class Inventory:
                 print("Nothing to delete.\n")
                 pass
             else:
-                delete = input("Enter item to delete: ")
+                delete = input("Enter item to delete: ").strip()
                 inventory_item.pop(delete)
                 print(f"{delete} deleted!\n")
                 Inventory.write_to_file(inventory_item)
@@ -51,7 +51,7 @@ class Inventory:
             print("No inventory available!\n")
         else:
             try:
-                take = input("What did you take? ")
+                take = input("What did you take? ").strip()
                 take_quantity = int(input(f"How many {take}? "))
                 if take_quantity > inventory_item[take]:
                     print(f"Not enough {take} available!\n")
