@@ -13,7 +13,6 @@ class Inventory:
         try:
             add_item = input("Enter item: ")
             quantity = int(input("Enter quantity: "))
-            #Location = input("Enter location: ")
 
             if add_item in item:
                 item[add_item] += quantity
@@ -79,7 +78,6 @@ class Inventory:
             print("No inventory available!\n")
 
         else:
-            #TODO: Add location to view_items
             for item, view in view_items.items():
                 if int(view) < 1:
                     print("No inventory available!\n")
