@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-"""
-Author: M. McConnaughey
-Inventory Version 2.8
-Date: 07/26/2022
-Python 3.7
-"""
-
-
 import json
 import clear_screen
 import get_data
