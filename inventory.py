@@ -46,8 +46,9 @@ class Inventory:
     def take_items() -> dict:
         """Take items from inventory."""
         inventory_item = get_data()
+        unavaliable = "No inventory available!\n"
         if inventory_item == {}:
-            print("No inventory available!\n")
+            print(unavaliable)
         else:
             try:
                 take = input("What did you take? ").strip()
@@ -67,12 +68,13 @@ class Inventory:
     def view_items() -> None:
         """View items from inventory."""
         view_items = get_data()
+        unavaliable = "No inventory available!\n"
         if view_items == {}:
-            print("No inventory available!\n")
+            print(unavaliable)
         else:
             for item, view in view_items.items():
                 if int(view) < 1:
-                    print("No inventory available!\n")
+                    print(unavaliable)
                 else:
                     print(f'{item} = {view}')
             print('\n')
