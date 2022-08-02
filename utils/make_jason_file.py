@@ -1,6 +1,6 @@
 import os
 
-class Json_file:
+class Json_File:
     """Check and/or create inventory file."""
 
     def create_inventory_file() -> None:
@@ -16,4 +16,4 @@ class Json_file:
         if os.path.exists("inventory.json"):
             pass
         else:
-            Json_file.create_inventory_file()
+            Json_File.create_inventory_file()
