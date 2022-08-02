@@ -1,6 +1,6 @@
 import json
-import clear_screen
-import get_data
+from utils.clear_screen import Clear_Screen
+from utils.get_data import get_data
 
 
 class Inventory:
@@ -8,7 +8,7 @@ class Inventory:
 
     def add_inventory() -> dict:
         """Add items to inventory."""
-        item = get_data.get_data()
+        item = get_data()
 
         try:
             add_item = input("Enter item: ")
@@ -22,13 +22,13 @@ class Inventory:
         except ValueError:
             print("Invalid Entry!")
 
-        clear_screen.Clear_Screen()
+        Clear_Screen()
         with open("inventory.json", "r+") as file:
             json.dump(item, file, indent=4)
 
     def delete_item() -> dict:
         """Delete items from inventory."""
-        item = get_data.get_data()
+        item = get_data()
 
         try:
             if item == {}:
@@ -49,7 +49,7 @@ class Inventory:
 
     def take_items() -> dict:
         """Take items from inventory."""
-        item = get_data.get_data()
+        item = get_data()
         if item == {}:
             print("No inventory available!\n")
 
@@ -63,6 +63,8 @@ class Inventory:
                 elif take in item:
                     item[take] -= deduct
                     print(f"{item[take]} {take} left.\n")
+                    with open("inventory.json", "w") as file:
+                        json.dump(item, file, indent=4)
                 else:
                     print(f"{take} doesn't exist.\n")
 
@@ -73,7 +75,7 @@ class Inventory:
 
     def view_items() -> None:
         """View items from inventory."""
-        view_items = get_data.get_data()
+        view_items = get_data()
         if view_items == {}:
             print("No inventory available!\n")
 
