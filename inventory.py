@@ -34,7 +34,6 @@ class Inventory:
         try:
             if inventory_item == {}:
                 print("Nothing to delete.\n")
-                pass
             else:
                 delete = input("Enter item to delete: ").strip()
                 inventory_item.pop(delete)
