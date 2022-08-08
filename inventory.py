@@ -5,7 +5,7 @@ from utils.get_data import get_data
 
 class Inventory:
     """Add, remove and view inventory."""
-    
+
     def write_to_file(inventory_item) -> None:
         """Write to file."""
         with open("inventory.json", "w") as file:
@@ -25,7 +25,7 @@ class Inventory:
         except ValueError:
             print("Invalid Entry!")
         Clear_Screen()
-        print(f"{add_item} added to inventory.")
+        print(f"{add_item} added to inventory.\n")
         Inventory.write_to_file(inventory_item)
 
     def delete_item() -> dict:
@@ -73,7 +73,7 @@ class Inventory:
             print(unavaliable)
         else:
             for item, view in view_items.items():
-                if int(view) < 1:
+                if int(view) < 0:
                     print(unavaliable)
                 else:
                     print(f'{item} = {view}')
