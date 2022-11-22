@@ -2,7 +2,7 @@
 """
 Author: M. McConnaughey
 Inventory Version 3
-Date: 08/03/2022
+Date: 11/22/2022
 Python 3.7
 """
 
@@ -11,13 +11,13 @@ from inventory import Inventory
 from utils.clear_screen import Clear_Screen
 from utils.get_data import get_data
 from utils.menu import Menu
-from utils.make_jason_file import Json_file
+from utils.make_jason_file import Json_File
 
 
 def main():
     """main function"""
     while True:
-        Json_file.check_inventory_file()
+        Json_File.check_inventory_file()
         choice = Menu.list_choices()
 
         option_dict = {
