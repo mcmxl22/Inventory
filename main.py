@@ -17,8 +17,8 @@ def main():
     """Main function."""
     JsonFile.check_inventory_file()
     get_data()
-    while True:
 
+    while True:
         option_dict = {
             "1": Inventory.add_inventory,
             "2": Inventory.take_items,
@@ -27,12 +27,10 @@ def main():
             "5": exit
         }
 
-
         try:
             option_dict[Menu.list_choices()]()
         except KeyError:
             print("Invalid entry!\n")
-
 
 if __name__ == "__main__":
     clear_screen()
