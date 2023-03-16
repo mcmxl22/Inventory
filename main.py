@@ -15,9 +15,9 @@ from utils.get_data import get_data
 
 def main():
     """Main function."""
+    JsonFile.check_inventory_file()
     get_data()
     while True:
-        JsonFile.check_inventory_file()
 
         option_dict = {
             "1": Inventory.add_inventory,
