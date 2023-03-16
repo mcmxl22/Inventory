@@ -91,5 +91,4 @@ class Inventory:
             return
 
         for item, view in view_items.items():
-            print(f'{item} = {view}')
-        print('\n')
+            print(f'{item} = {view}\n')
