@@ -1,3 +1,4 @@
+from datetime import datetime
 from utils.write_to_file import Write
 from utils.clear_screen import clear_screen
 from utils.get_data import get_data
@@ -24,6 +25,7 @@ class Inventory:
             return item
 
         item[add_item] = item.get(add_item, 0) + quantity
+        item[f"{add_item} added"] = datetime.today().strftime('%m-%d-%Y')
         print(f"{add_item} added to inventory.\n")
         Write.write_to_file(item)
         return item
@@ -43,6 +45,7 @@ class Inventory:
             return item
 
         item.pop(delete)
+        item.pop(f"{delete} added")
         print(f"{delete} deleted!")
         Write.write_to_file(item)
         return item
