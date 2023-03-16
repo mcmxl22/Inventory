@@ -1,42 +1,41 @@
 #!/usr/bin/env python3
 """
 Author: M. McConnaughey
-Inventory Version 3
-Date: 11/22/2022
-Python 3.7
+Inventory Version 3.1
+Date: 03/15/2023
+Python 3.9
 """
 
-
 from inventory import Inventory
-from utils.clear_screen import Clear_Screen
+from utils.menu import list_choices
+from utils.clear_screen import clear_screen
+from utils.make_json_file import JsonFile
 from utils.get_data import get_data
-from utils.menu import Menu
-from utils.make_jason_file import Json_File
 
 
 def main():
-    """main function"""
+    """Main function."""
+    get_data()
     while True:
-        Json_File.check_inventory_file()
-        choice = Menu.list_choices()
+        JsonFile.check_inventory_file()
 
         option_dict = {
             "1": Inventory.add_inventory,
             "2": Inventory.take_items,
             "3": Inventory.view_items,
             "4": Inventory.delete_item,
-            "5": exit,
+            "5": exit
         }
 
+        
         try:
-            Clear_Screen()
-            get_data()
-            option_dict[choice]()
+            list_choices()
+            option_dict[input('Choose an option: ')]()
 
         except KeyError:
             print("Invalid entry!\n")
 
 
 if __name__ == "__main__":
-    Clear_Screen()
+    clear_screen()
     main()
