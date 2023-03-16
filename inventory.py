@@ -1,15 +1,9 @@
-import json
+from utils.write_to_file import Write
 from utils.clear_screen import clear_screen
 from utils.get_data import get_data
 
 class Inventory:
     """Add, remove and view inventory."""
-
-    def write_to_file(inventory_item):
-        """Write to file."""
-        with open("inventory.json", "w") as file:
-            json.dump(inventory_item, file, indent=4)
-
     def check_available_inventory():
         inventory_item = get_data()
         if not inventory_item:
@@ -33,7 +27,7 @@ class Inventory:
 
         #clear_screen()
         print(f"{add_item} added to inventory.\n")
-        Inventory.write_to_file(inventory_item)
+        Write.write_to_file(inventory_item)
         return inventory_item
 
     def delete_item() -> dict:
@@ -51,7 +45,7 @@ class Inventory:
 
         inventory_item.pop(delete)
         print(f"{delete} deleted!\n")
-        Inventory.write_to_file(inventory_item)
+        Write.write_to_file(inventory_item)
         return inventory_item
 
     def take_items() -> dict:
@@ -79,7 +73,7 @@ class Inventory:
 
         inventory_item[take] -= take_quantity
         print(f"{inventory_item[take]} {take} left.\n")
-        Inventory.write_to_file(inventory_item)
+        Write.write_to_file(inventory_item)
         return inventory_item
 
     def view_items() -> None:
