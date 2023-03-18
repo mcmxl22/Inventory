@@ -1,6 +1,6 @@
 import json
 
-class Write:    
+class Write:
 
     def write_to_file(item) -> None:
         """Write to file."""
