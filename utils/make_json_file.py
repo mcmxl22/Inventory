@@ -7,7 +7,7 @@ class JsonFile:
     def create_inventory_file() -> None:
         """Create file"""
         with open("inventory.json", "w+") as f:
-            print(f"inventory.json created!")
+            print("inventory.json created!")
 
     @staticmethod
     def check_inventory_file() -> None:
